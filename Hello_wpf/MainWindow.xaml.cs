@@ -1,4 +1,6 @@
-﻿using System;
+﻿/// Файл с обработчиками событий 
+/// Автор: Будаев Г.Б.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,104 +27,61 @@ namespace Hello_wpf
             InitializeComponent();
         }
 
-        bool _shown;
+        bool _shown = false;
 
-        static string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-
+        /// <summary>
+        /// для заполнения ComboBoxShift числами от 1 до 33
+        /// переопределение ContentRendered
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnContentRendered(EventArgs e)
         {
+            /// вызывает событие ContentRendered;
+            /// ContentRendered происходит после завершения отображения содержимого окна
+            /// если в окне нет содержимого, это событие не вызывается
             base.OnContentRendered(e);
 
-            if (_shown)
+            /// выход, если окно уже показывается
+            if (_shown) 
                 return;
 
             _shown = true;
 
+            /// заполнение
             for (int i = 1; i <= 33; i++)
             {
                 ComboBoxShift.Items.Add(i);
             }
         }
 
-        public static string CaesarCipherEncrypt(string cipherText, int key)
-        {
-            string cipherTextLow = cipherText.ToLower();
-            char[] sourceText = new char[cipherTextLow.Length];
-            int j = 0;
-            key = -key;
-            for (int i = 0; i < cipherTextLow.Length; i++)
-            {
-                if (!char.IsLetter(cipherTextLow[i]))
-                    sourceText[i] = cipherTextLow[i];
-                else
-                {
-                    sourceText[i] = '|';
-                    while (sourceText[i] == '|')
-                    {
-                        if (cipherTextLow[i] == alphabet[j])
-                        {
-                            try
-                            {
-                                sourceText[i] = alphabet[j - key];
-                            }
-                            catch
-                            {
-                                sourceText[i] = alphabet[(j - key) + 33];
-                            }
-                        }
-                        j++;
-                    }
-                    j = 0;
-                }
-            }
-
-            return new string(sourceText);
-        }
-
-        public static string CaesarCipherDecrypt(string cipherText, int key)
-        {
-            string cipherTextLow = cipherText.ToLower();
-            char[] sourceText = new char[cipherTextLow.Length];
-            int j = 0;
-            // key = -key;
-            for (int i = 0; i < cipherTextLow.Length; i++)
-            {
-                if (!char.IsLetter(cipherTextLow[i]))
-                    sourceText[i] = cipherTextLow[i];
-                else
-                {
-                    sourceText[i] = '|';
-                    while (sourceText[i] == '|')
-                    {
-                        if (cipherTextLow[i] == alphabet[j])
-                        {
-                            try
-                            {
-                                sourceText[i] = alphabet[j - key];
-                            }
-                            catch
-                            {
-                                sourceText[i] = alphabet[(j - key) + 33];
-                            }
-                        }
-                        j++;
-                    }
-                    j = 0;
-                }
-            }
-
-            return new string(sourceText);
-        }
-
+        /// <summary>
+        /// обработчик на кнопку с учётом режима работы (расшифровать/зашифровать)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonToEncrypt_Click(object sender, RoutedEventArgs e)
         {
-            if(ComboBoxOperation.Text == "Зашифровать")
-                TextBoxResult.Text = CaesarCipherEncrypt(TextBox1.Text, int.Parse(ComboBoxShift.SelectedItem.ToString()));
+            if (TextBox1.Text.Any(c => (c >= 'A' && c <= 'z')))//как-то так
+            {
+                TextBoxResult.Text = "Введены латинские символы";
+            }
             else
-            if(ComboBoxOperation.Text == "Расшифровать")
-                TextBoxResult.Text = CaesarCipherDecrypt(TextBox1.Text, int.Parse(ComboBoxShift.SelectedItem.ToString()));                
+            {
+                CaesarCipher caesarCipher = new CaesarCipher();
+                if (ComboBoxOperation.Text == "Зашифровать")
+                    TextBoxResult.Text = caesarCipher.CaesarCipherEncrypt(TextBox1.Text, int.Parse(ComboBoxShift.SelectedItem.ToString()));
+                else
+                if (ComboBoxOperation.Text == "Расшифровать")
+                    TextBoxResult.Text = caesarCipher.CaesarCipherDecrypt(TextBox1.Text, int.Parse(ComboBoxShift.SelectedItem.ToString()));
+            }
+       
         }
 
+        /// <summary>
+        /// изменить текст кнопки при изменении режима работы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBoxOperation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {   
             if (ComboBoxOperation.Text == "Зашифровать")

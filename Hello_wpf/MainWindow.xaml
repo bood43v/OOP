@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hello_wpf"
         mc:Ignorable="d"
-        Title="Шифр Цезаря" Height="450" Width="800" WindowStyle="SingleBorderWindow" FontFamily="Lucida Sans" FontSize="16" Icon="/icon.ico" ResizeMode="CanMinimize" Background="White">
+        Title="Шифр Цезаря" Height="450" Width="800" WindowStyle="SingleBorderWindow" FontFamily="Lucida Sans" FontSize="16"  ResizeMode="CanMinimize" Background="White" Icon="/icon.ico">
 
     <Grid x:Name="MainGrid" Background="Bisque" >
         <Grid.RowDefinitions>

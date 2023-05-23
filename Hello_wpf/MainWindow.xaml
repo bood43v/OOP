@@ -14,9 +14,6 @@
     </Window.Background>
 
     <Grid x:Name="MainGrid" >
-        <Grid.Background>
-            <ImageBrush TileMode="None"/>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="230*"/>
             <RowDefinition Height="50*"/>
@@ -34,7 +31,7 @@
                  Grid.Row="0" Grid.Column="0" 
                  Text="Здесь может быть ваше сообщение" 
                  Grid.ColumnSpan="3" 
-                 Margin="10,40,10,42" 
+                 Margin="10,39,10,42" 
                  Grid.RowSpan="2"/>
         <TextBox x:Name="TextBoxResult" 
                  Grid.Row="1" 

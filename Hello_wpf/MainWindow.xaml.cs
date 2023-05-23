@@ -61,7 +61,8 @@ namespace Hello_wpf
         /// <param name="e"></param>
         private void ButtonToEncrypt_Click(object sender, RoutedEventArgs e)
         {
-            if (TextBox1.Text.Any(c => (c >= 'A' && c <= 'z')))//как-то так
+            /// Если введена латиница - не обрабатываем строку
+            if (TextBox1.Text.Any(c => (c >= 'A' && c <= 'z')))
             {
                 TextBoxResult.Text = "Введены латинские символы";
             }

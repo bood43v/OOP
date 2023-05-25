@@ -91,5 +91,17 @@ namespace Hello_wpf
             if (ComboBoxOperation.Text == "Расшифровать")
                 Button.Content = "Зашифровать";
         }
+
+        /// <summary>
+        /// Поменять местами текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string Buf = TextBoxResult.Text;
+            TextBoxResult.Text = TextBox1.Text;
+            TextBox1.Text = Buf;
+        }
     }
 }

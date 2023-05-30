@@ -30,7 +30,8 @@
 
             <Label Text="Сдвиг"/>
             
-            <Picker x:Name="PickerShift"/>
+            <Picker x:Name="PickerShift"
+                    SelectedIndexChanged = "ButtonChangeShift_Click"/>
             
             <Button x:Name="ButtonProcess"
                     Text="Зашифровать"

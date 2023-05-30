@@ -46,6 +46,10 @@ namespace CaesarCypher
 
         private void ButtonProcess_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Editor1.Text))
+            {
+                Editor2.Text = "Сообщение пустое";
+            }else
             /// Если введена латиница - не обрабатываем строку
             if (Editor1.Text.Any(c => (c >= 'A' && c <= 'z')))
             {
@@ -72,13 +76,26 @@ namespace CaesarCypher
 
         private void ButtonChangeOperation_Click(object sender, EventArgs e)
         {
-            if (PickerOperation.SelectedIndex == 0)
-                ButtonProcess.Text = "Расшифровать";
-            else
             if (PickerOperation.SelectedIndex == 1)
+            {
+                ButtonProcess.Text = "Расшифровать";
+                Editor2.Text = "";
+            }
+                
+            else
+            if (PickerOperation.SelectedIndex == 0)
+            {
                 ButtonProcess.Text = "Зашифровать";
+                Editor2.Text = "";
+            }
+                
+        }
+        private void ButtonChangeShift_Click(object sender, EventArgs e)
+        {
+            Editor2.Text = "";
         }
 
+       
 
 
     }

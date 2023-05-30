@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -48,12 +48,13 @@ namespace CaesarCypher
         {
             if (string.IsNullOrEmpty(Editor1.Text))
             {
-                Editor2.Text = "Сообщение пустое";
-            }else
+                Editor2.Placeholder = "Сообщение пустое";
+            }
+            else
             /// Если введена латиница - не обрабатываем строку
             if (Editor1.Text.Any(c => (c >= 'A' && c <= 'z')))
             {
-                Editor2.Text = "Введены латинские символы";
+                Editor2.Placeholder = "Введены латинские символы";
             }
             else
             {
@@ -79,14 +80,14 @@ namespace CaesarCypher
             if (PickerOperation.SelectedIndex == 1)
             {
                 ButtonProcess.Text = "Расшифровать";
-                Editor2.Text = "";
+                Editor2.Placeholder = "";
             }
                 
             else
             if (PickerOperation.SelectedIndex == 0)
             {
                 ButtonProcess.Text = "Зашифровать";
-                Editor2.Text = "";
+                Editor2.Placeholder = "";
             }
                 
         }
@@ -94,9 +95,6 @@ namespace CaesarCypher
         {
             Editor2.Text = "";
         }
-
-       
-
 
     }
 

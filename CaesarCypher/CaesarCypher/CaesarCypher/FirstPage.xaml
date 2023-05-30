@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CaesarCypher.FirstPage"
+             Title="First Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Editor
+                x:Name="Editor1"
+                Placeholder="Введите сообщение"></Editor>
+            <Button Text="Зашифровать" Clicked="Button_crypt"></Button>
+            <Editor
+                x:Name="Editor2"
+                IsReadOnly="True"
+                Placeholder=""></Editor>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

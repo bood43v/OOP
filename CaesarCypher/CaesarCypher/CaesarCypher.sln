@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaesarCypher.Android", "Cae
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaesarCypher.iOS", "CaesarCypher.iOS\CaesarCypher.iOS.csproj", "{AA72EB5A-8AD7-4309-8977-C3FD3B1D179B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaesarCypher", "CaesarCypher\CaesarCypher.csproj", "{B6108FE8-DF3C-4C5D-BAD2-707119EE37BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaesarCypher", "CaesarCypher\CaesarCypher.csproj", "{B6108FE8-DF3C-4C5D-BAD2-707119EE37BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{50974D2E-539F-48D3-8927-DF747907502A}"
+	ProjectSection(SolutionItems) = preProject
+		CaesarCypher\CaesarCipher.cs = CaesarCypher\CaesarCipher.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
